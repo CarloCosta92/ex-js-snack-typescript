@@ -7,6 +7,11 @@ console.log("Test")
 // Se è un booleano: stampa “Sì” o “No” in base al suo valore
 // In tutti gli altri casi: stampa “Tipo non supportato”
 
+// 🎯 BONUS
+// Se è null: stampa “Il dato è vuoto”
+// Se è un array: stampa la sua lunghezza
+// Se è una Promise: attendi che si risolva e stampa il valore del resolve.
+
 let datoApi: unknown;
 
 if (typeof datoApi === "string") {
@@ -15,7 +20,14 @@ if (typeof datoApi === "string") {
   console.log(datoApi * 2)
 } else if (typeof datoApi === "boolean") {
   console.log(datoApi ? "Sì" : "No")
-} else {
+} else if (datoApi === null) {
+  console.log("Il dato è vuoto")
+} else if (Array.isArray(datoApi)) {
+  console.log(datoApi.length)
+} else if (datoApi instanceof Promise) {
+  datoApi.then((messaggio) => console.log(messaggio))
+}
+else {
   console.log("Tipo non supportato")
 }
 
